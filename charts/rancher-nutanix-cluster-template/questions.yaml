@@ -60,8 +60,8 @@ questions:
   type: enum
   description: "Nutanix Project where the virtual machine will be created"
   group: "Global"
-  values:
-  - "10210-0000-GDM-Konsult-AB"
+  options:
+  - "10210-GDM-Konsult-AB"
   - "10210-0000-GDM-Konsult-AB-2"
 - variable: global.nodepools.vmImage
   label: "Image Name"
