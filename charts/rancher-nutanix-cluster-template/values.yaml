@@ -36,7 +36,7 @@ global:
   nodepools:
     cluster: PHX-SPOC020-1
     project: BootcampInfra
-    vmImage: ubuntu-22.04-server-cloudimg-amd64.img
+    vmImage: ubuntu-22.04-server-cloudimg-amd64
     vmNetwork:
     - vlan2010
     vmCategories: 

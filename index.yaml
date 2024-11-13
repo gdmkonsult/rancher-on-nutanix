@@ -1,11 +1,24 @@
 apiVersion: v1
 entries:
+  Privat Molncontainer:
+  - annotations:
+      catalog.cattle.io/namespace: fleet-default
+      catalog.cattle.io/type: cluster-template
+    apiVersion: v1
+    created: "2024-11-13T13:54:33.182238+01:00"
+    description: Deploy RKE2 or K3s Clusters on Privat Molncontainer
+    digest: e73ed878613a817c8f8499e863df31ca447c5e3a766e581f81dffc07d66aec8f
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Nutanix_Logo.svg/1024px-Nutanix_Logo.svg.png
+    name: Privat Molncontainer
+    urls:
+    - Privat Molncontainer-0.1.0.tgz
+    version: 0.1.0
   rancher-nutanix-cluster-template:
   - annotations:
       catalog.cattle.io/namespace: fleet-default
       catalog.cattle.io/type: cluster-template
     apiVersion: v1
-    created: "2024-10-29T12:10:20.285307037Z"
+    created: "2024-11-13T13:54:33.185692+01:00"
     description: Deploy RKE2 or K3s Clusters on Nutanix
     digest: fdd4536c8bf0821a5a6b134fafaf45e8879589cc2274116809cfc50e0b907a47
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Nutanix_Logo.svg/1024px-Nutanix_Logo.svg.png
@@ -13,4 +26,4 @@ entries:
     urls:
     - rancher-nutanix-cluster-template-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-29T12:10:20.284328081Z"
+generated: "2024-11-13T13:54:33.180873+01:00"
