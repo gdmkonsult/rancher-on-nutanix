@@ -57,9 +57,12 @@ questions:
 - variable: global.nodepools.project
   label: "Project"
   default: "10210-0000-GDM-Konsult-AB"
-  type: string
+  type: enum
   description: "Nutanix Project where the virtual machine will be created"
   group: "Global"
+  values:
+  - "10210-0000-GDM-Konsult-AB"
+  - "10210-0000-GDM-Konsult-AB-2"
 - variable: global.nodepools.vmImage
   label: "Image Name"
   default: "ubuntu-24.04-server-cloudimg-amd64"
