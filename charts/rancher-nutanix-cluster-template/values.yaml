@@ -41,7 +41,8 @@ global:
   nodepools:
     bootType: uefi
     cluster: nxtest01
-    project:  
+    project: 
+    insecure: true
     vmImage: ubuntu-24.04-server-cloudimg-amd64
     vmNetwork: ""
     cloudInit: |-
