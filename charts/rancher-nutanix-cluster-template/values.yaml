@@ -43,7 +43,7 @@ global:
     cluster: nxtest01
     project:  
     vmImage: ubuntu-24.04-server-cloudimg-amd64
-    vmNetwork: []
+    vmNetwork: ""
     cloudInit: |-
       #cloud-config 
       package_update: true

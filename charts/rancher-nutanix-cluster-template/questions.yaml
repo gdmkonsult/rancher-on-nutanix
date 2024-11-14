@@ -8,7 +8,7 @@ questions:
   type: string
   group: "General"
 - variable: cloudCredentialSecretName
-  default: "cattle-global-data:nutanix-pc-creds"
+  default: ""
   description: "CloudCredentialName for provisioning cluster"
   label: "CloudCredential Name"
   type: cloudcredential
