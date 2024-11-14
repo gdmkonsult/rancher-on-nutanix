@@ -10,7 +10,7 @@ cluster:
   annotations: {}
 
 # specify cloud credential secret name
-cloudCredentialSecretName: "cattle-global-data:cc-d6bnl"
+cloudCredentialSecretName: ""
 
 # rke2 example
 kubernetesVersion: "v1.29.10+rke2r1"
