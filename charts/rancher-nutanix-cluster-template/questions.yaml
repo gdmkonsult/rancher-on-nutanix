@@ -105,7 +105,7 @@ questions:
   group: "Control pool"
 - variable: nodepools.0.vmMem
   default: 4
-  description: "Specify the number of RAM in (MB) for each controlplane node"
+  description: "Specify the number of RAM (in GB) for each controlplane node"
   type: int
   required: true
   label: "Control Plane Memory"
@@ -153,7 +153,7 @@ questions:
   group: "Worker pool"
 - variable: nodepools.1.vmMem
   default: 4
-  description: "Specify the number of RAM in (MB) for each worker node"
+  description: "Specify the number of RAM (in MB) for each worker node"
   type: int
   required: true
   label: "Worker node Memory"

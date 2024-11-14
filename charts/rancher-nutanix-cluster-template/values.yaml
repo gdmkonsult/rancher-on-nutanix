@@ -41,7 +41,7 @@ global:
   nodepools:
     bootType: uefi
     cluster: nxtest01
-    project:
+    project: 
     insecure: true
     vmImage: ubuntu-24.04-server-cloudimg-amd64
     vmNetwork: ""
@@ -59,10 +59,10 @@ nodepools:
   controlplane: true
   worker: false
   vmCores: "1"
-  vmCpus: ""
+  vmCpus: "4"
   vmImageSize: "120"
   diskSize: "120"
-  vmMem: ""
+  vmMem: "4"
   storageContainer: cf53778c-f63d-4144-8433-9176456559f1
   quantity: 1
   name: control
@@ -72,10 +72,10 @@ nodepools:
   controlplane: false
   worker: true
   vmCores: "1"
-  vmCpus: ""
+  vmCpus: "8"
   vmImageSize: "120"
   diskSize: "120"
-  vmMem: ""
+  vmMem: "6"
   storageContainer: cf53778c-f63d-4144-8433-9176456559f1
   quantity: 1
   name: worker

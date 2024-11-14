@@ -23,7 +23,7 @@ vmCpuPassthrough: {{ $nodepool.vmCpuPassthrough | default "false" }}
 vmCpus: {{ $nodepool.vmCpus | default "2" | quote }}
 vmImage: {{ $nodepool.vmImage }}
 vmImageSize: {{ $nodepool.vmImageSize | default "200" | quote }}
-vmMem: {{ $nodepool.vmMem | default "8192" | quote }}
+vmMem: {{ (mul ($nodepool.vmMem) 1024) | default "8192" | quote }}
 {{- if $nodepool.vmNetwork }}
 vmNetwork:
   - {{ $nodepool.vmNetwork | quote }}
