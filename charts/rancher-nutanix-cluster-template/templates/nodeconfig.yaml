@@ -36,5 +36,6 @@ vmCategories:
 {{ toYaml $nodepool.vmCategories | indent 2 }}
 {{- end }}
 vmSerialPort: {{ $nodepool.vmSerialPort | default "false" }}
+bootType: {{ $nodepool.bootType | default "uefi" | quote }}
 ---
 {{- end }}

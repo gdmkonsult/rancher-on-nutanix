@@ -1,7 +1,7 @@
 # Rancher cluster specific values
 cluster:
   # specify Rancher cluster name
-  name: rancher-nutanix-cluster
+  name: 
 
   # specify Rancher cluster labels
   labels: {}
@@ -10,10 +10,10 @@ cluster:
   annotations: {}
 
 # specify cloud credential secret name
-cloudCredentialSecretName: "cattle-global-data:nutanix-pc-creds"
+cloudCredentialSecretName: "cattle-global-data:cc-d6bnl"
 
 # rke2 example
-kubernetesVersion: "v1.24.17+rke2r1"
+kubernetesVersion: "v1.29.10+rke2r1"
 
 # k3s example
 # kubernetesVersion: v1.24.17+k3s1
@@ -29,50 +29,53 @@ rke:
     enabled: false
     caCerts: ""
     fqdn: ""
-
+  machineGlobalConfig:
+    cluster-cidr: 100.64.0.0/24
+    cni: calico
+    disable-kube-proxy: false
+    etcd-expose-metrics: false
+    service-cidr: 100.65.0.0/21
 
 # global nutanix nodepool configs. These configs can be overriden within each nodepool.
 global:
   nodepools:
-    cluster: PHX-SPOC020-1
-    project: 
-    vmImage: ubuntu-22.04-server-cloudimg-amd64
+    bootType: uefi
+    cluster: nxtest01
+    project: bajskorv 
+    vmImage: ubuntu-24.04-server-cloudimg-amd64
     vmNetwork:
-    - vlan2010
-    vmCategories: 
-    - AppType=Kubernetes
     cloudInit: |-
       #cloud-config 
       package_update: true
       package_upgrade: true
-      packages:
-        - open-iscsi
-        - nfs-common
-      runcmd:
-        - systemctl stop ufw && systemctl disable ufw
 
 
 # Specify nodepool options. Can add multiple node groups, specify etcd, controlplane and worker roles.
 nodepools:
 
-## control plane nodepool configs
-- etcd: false
+## control plane and etc nodepool configs
+- etcd: true
   controlplane: true
   worker: false
+  vmCores: 1
+  vmCpus:
+  vmImageSize: "120"
+  diskSize: "120"
+  vmMem: ""
+  storageContainer: cf53778c-f63d-4144-8433-9176456559f1
   quantity: 1
   name: control
-
-## etcd nodepool configs
-- etcd: true
-  controlplane: false
-  worker: false
-  quantity: 1
-  name: etcd
 
 ## worker nodepool configs
 - etcd: false
   controlplane: false
   worker: true
+  vmCores: 1
+  vmCpus:
+  vmImageSize: "120"
+  diskSize: "120"
+  vmMem: ""
+  storageContainer: cf53778c-f63d-4144-8433-9176456559f1
   quantity: 1
   name: worker
 
