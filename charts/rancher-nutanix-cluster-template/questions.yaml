@@ -107,7 +107,7 @@ questions:
   description: "Specify the number of RAM in (MB) for each controlplane node"
   type: int
   required: true
-  label: "Control Plane vCPU count"
+  label: "Control Plane Memory"
   group: "Control pool"
 - variable: nodepools.0.vmImageSize
   default: 120
@@ -151,7 +151,7 @@ questions:
   description: "Specify the number of RAM in (MB) for each worker node"
   type: int
   required: true
-  label: "Worker node vCPU count"
+  label: "Worker node Memory"
   group: "Worker pool"
 - variable: nodepools.1.vmImageSize
   default: 120
