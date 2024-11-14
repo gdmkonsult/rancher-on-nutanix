@@ -11,13 +11,13 @@ cloudInit: |-
 {{ $nodepool.cloudInit | indent 2 }}
 {{- end }}
 cluster: {{ $nodepool.cluster }}
-endpoint: {{ $nodepool.endpoint }}
+endpoint: ""
 insecure: {{ $nodepool.insecure | default "true" }}
-password: {{ $nodepool.password }}
+password: ""
+username: ""
 port: {{ $nodepool.port | default "9440" | quote }}
 storageContainer: {{ $nodepool.storageContainer }}
 diskSize: {{ $nodepool.diskSize | default "0" | quote }}
-username: {{ $nodepool.username | default "admin" }}
 vmCores: {{ $nodepool.vmCores | default "2" | quote }}
 vmCpuPassthrough: {{ $nodepool.vmCpuPassthrough | default "false" }}
 vmCpus: {{ $nodepool.vmCpus | default "2" | quote }}
