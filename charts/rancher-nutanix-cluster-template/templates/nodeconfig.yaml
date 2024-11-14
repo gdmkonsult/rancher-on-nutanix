@@ -26,7 +26,7 @@ vmImageSize: {{ $nodepool.vmImageSize | default "200" | quote }}
 vmMem: {{ $nodepool.vmMem | default "8192" | quote }}
 {{- if $nodepool.vmNetwork }}
 vmNetwork:
-{{ toYaml $nodepool.vmNetwork | indent 2 }}
+  - {{ $nodepool.vmNetwork | quote }}
 {{- end }}
 {{- if $nodepool.project }}
 project: {{ $nodepool.project | default "_internal" | quote }}
