@@ -5,12 +5,12 @@ entries:
       catalog.cattle.io/namespace: fleet-default
       catalog.cattle.io/type: cluster-template
     apiVersion: v1
-    created: "2024-11-14T14:57:07.026295+01:00"
+    created: "2024-11-14T15:31:41.044835+01:00"
     description: Deploy RKE2 or K3s Clusters on GDM Privat Molncontainer
-    digest: 8bbdc85b8e9fd0083c983b8452908c074ddcd3efdc8a055f84f55ad77c2fd662
+    digest: 8f2490272246b74e656fea42c10901dc45358ddb1d8ba613371b7ad86492d1bd
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Nutanix_Logo.svg/1024px-Nutanix_Logo.svg.png
     name: privat-molncontainer
     urls:
-    - privat-molncontainer-0.1.0.tgz
-    version: 0.1.0
-generated: "2024-11-14T14:57:07.02555+01:00"
+    - privat-molncontainer-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-11-14T15:31:41.044108+01:00"
