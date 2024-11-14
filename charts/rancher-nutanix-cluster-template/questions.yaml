@@ -55,7 +55,7 @@ questions:
   group: "Global"
   options:
   - "10210-GDM-Konsult-AB"
-  - "10210-0000-GDM-Konsult-AB-2"
+  - "10064-Test_dual_projects"
 - variable: global.nodepools.vmNetwork
   label: "Network"
   default: 
@@ -63,7 +63,7 @@ questions:
   description: "Nutanix network where the virtual machine will be attached"
   options:
   - "Rancher-IPMI"
-  - ""
+  - "1700-GDM i Norr R&D"
   group: "Global"
 - variable: global.nodepools.cloudInit
   label: "Cloud Init"
@@ -79,7 +79,7 @@ questions:
 ## nodepools
   ## Controle Plane pool
 - variable: nodepools.0.name
-  default:
+  default: control
   description: "Specify Control Plane nodepool name"
   type: string
   label: "Control Plane Nodepool name"
@@ -88,30 +88,82 @@ questions:
 - variable: nodepools.0.quantity
   default: 1
   description: "Specify Control Plane node count"
-  type: int
+  type: enum
+  options:
+  - 1
+  - 3
   required: true
   label: "Control Plane Node count"
   group: "Control pool"
 - variable: nodepools.0.vmCpus
   default: 4
   description: "Specify the number of vCPUs for each controlplane node"
+  type: enum
+  required: true
+  label: "Control Plane vCPU count"
+  group: "Control pool"
+- variable: nodepools.0.vmMem
+  default: 4
+  description: "Specify the number of RAM in (MB) for each controlplane node"
   type: int
   required: true
   label: "Control Plane vCPU count"
   group: "Control pool"
+- variable: nodepools.0.vmImageSize
+  default: 120
+  description: "Specify the size (in GB) for the control plane system disk"
+  type: int
+  required: true
+  label: "Control Plane system disk dize"
+  group: "Control pool"
+- variable: nodepools.0.diskSize
+  default: 120
+  description: "Specify the size (in GB) for the extra disk"
+  type: int
+  required: true
+  label: "Control Plane extra disk size"
+  group: "Control pool"
 
   ## Worker pool 
 - variable: nodepools.1.name
-  default:
-  description: "Specify Etcd nodepool name"
+  default: worker
+  description: "Specify worker nodepool name"
   type: string
-  label: "Etcd Nodepool name"
+  label: "Worker Plane Nodepool name"
   required: true
   group: "Worker pool"
 - variable: nodepools.1.quantity
   default: 1
-  description: "Specify Etcd node count"
+  description: "Specify worker node count"
   type: int
   required: true
-  label: "Etcd Node count"
+  label: "Worker Node count"
+  group: "Worker pool"
+- variable: nodepools.1.vmCpus
+  default: 4
+  description: "Specify the number of vCPUs for each worker node"
+  type: enum
+  required: true
+  label: "Worker node vCPU count"
+  group: "Worker pool"
+- variable: nodepools.1.vmMem
+  default: 4
+  description: "Specify the number of RAM in (MB) for each worker node"
+  type: int
+  required: true
+  label: "Worker node vCPU count"
+  group: "Worker pool"
+- variable: nodepools.1.vmImageSize
+  default: 120
+  description: "Specify the size (in GB) for the worker node system disk"
+  type: int
+  required: true
+  label: "Worker node system disk dize"
+  group: "Worker pool"
+- variable: nodepools.1.diskSize
+  default: 120
+  description: "Specify the size (in GB) for the extra disk"
+  type: int
+  required: true
+  label: "Worker node extra disk size"
   group: "Worker pool"
