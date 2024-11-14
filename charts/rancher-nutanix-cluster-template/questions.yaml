@@ -24,13 +24,14 @@ questions:
   - k3s
   group: "General"
 - variable: kubernetesVersion
-  default: v1.29.9+rke2r1
+  default: v1.29.10+rke2r1
   description: "Specify RKE2 Kubernetes version"
   label: "RKE2 Kubernetes Version"
   type: enum
   show_if: kubernetesDistro=rke2
   required: true
   options:
+  - v1.29.10+rke2r1
   - v1.29.9+rke2r1
   group: "General"
 - variable: kubernetesVersion
