@@ -57,8 +57,8 @@ nodepools:
 - etcd: true
   controlplane: true
   worker: false
-  vmCores: 1
-  vmCpus:
+  vmCores: "1"
+  vmCpus: ""
   vmImageSize: "120"
   diskSize: "120"
   vmMem: ""
@@ -70,8 +70,8 @@ nodepools:
 - etcd: false
   controlplane: false
   worker: true
-  vmCores: 1
-  vmCpus:
+  vmCores: "1"
+  vmCpus: ""
   vmImageSize: "120"
   diskSize: "120"
   vmMem: ""
