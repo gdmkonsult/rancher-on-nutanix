@@ -1,6 +1,7 @@
 apiVersion: v1
-name: Privat-Molncontainer
-description: "Deploy RKE2 or K3s Clusters on Privat Molncontainer"
+name: privat-molncontainer
+label: Privat Molncontainer
+description: "Deploy RKE2 or K3s Clusters on GDM Privat Molncontainer"
 version: 0.1.1
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Nutanix_Logo.svg/1024px-Nutanix_Logo.svg.png
 annotations:
