@@ -55,7 +55,7 @@ questions:
   description: "Nutanix Project where the virtual machine will be created"
   group: "Global"
   options:
-  - "10210-GDM-Konsult-AB"
+  - "10210-0000-GDM-Konsult-AB"
   - "10064-Test_dual_projects"
 - variable: global.nodepools.vmNetwork
   label: "Network"
