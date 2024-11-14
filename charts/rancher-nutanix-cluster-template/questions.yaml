@@ -60,7 +60,7 @@ questions:
 - variable: global.nodepools.vmNetwork
   label: "Network"
   default: 
-  type: enum
+  type: array
   description: "Nutanix network where the virtual machine will be attached"
   options:
   - "Rancher-IPMI"
