@@ -63,7 +63,7 @@ questions:
   type: enum
   description: "Nutanix network where the virtual machines will be attached"
   options:
-  - "Rancher-IPMI"
+  - "Rancher-IPAM"
   - "1700-GDM i Norr R&D"
   group: "Global"
 - variable: global.nodepools.cloudInit
