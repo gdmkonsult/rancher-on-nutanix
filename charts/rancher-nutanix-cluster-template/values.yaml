@@ -1,7 +1,3 @@
-# Extra manifests configuration
-extraManifests:
-  enabled: true
-
 # Rancher cluster specific values
 cluster:
   # specify Rancher cluster name
