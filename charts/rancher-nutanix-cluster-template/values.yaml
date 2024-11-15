@@ -35,6 +35,77 @@ rke:
     disable-kube-proxy: false
     etcd-expose-metrics: false
     service-cidr: 100.65.0.0/21
+    addons: |-
+      ---
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: post-install-script
+        namespace: kube-system
+      data:
+        script: |
+          #!/bin/bash
+          
+          # Vänta tills clustret är redo
+          until kubectl get nodes | grep -q " Ready"; do
+            echo "Väntar på att clustret ska bli redo..."
+            sleep 10
+          done
+          
+          # Installera MetalLB
+          kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
+          
+          # Vänta tills MetalLB pods är redo
+          kubectl wait --namespace metallb-system \
+                      --for=condition=ready pod \
+                      --selector=app=metallb \
+                      --timeout=90s
+          
+          # Konfigurera MetalLB (exempel på konfiguration)
+          cat <<EOF | kubectl apply -f -
+          apiVersion: metallb.io/v1beta1
+          kind: IPAddressPool
+          metadata:
+            name: first-pool
+            namespace: metallb-system
+          spec:
+            addresses:
+            - 10.11.58.126-10.11.58.130
+          ---
+          apiVersion: metallb.io/v1beta1
+          kind: L2Advertisement
+          metadata:
+            name: example
+            namespace: metallb-system
+          spec:
+            ipAddressPools:
+            - first-pool
+          ---
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: rke2-ingress-nginx-controller-loadbalancer
+            namespace: kube-system
+            labels:
+              app.kubernetes.io/component: controller
+              app.kubernetes.io/instance: rke2-ingress-nginx
+              app.kubernetes.io/name: rke2-ingress-nginx
+          spec:
+            type: LoadBalancer
+            selector:
+              app.kubernetes.io/component: controller
+              app.kubernetes.io/instance: rke2-ingress-nginx
+              app.kubernetes.io/name: rke2-ingress-nginx
+            ports:
+              - name: http
+                port: 80
+                targetPort: http
+                protocol: TCP
+              - name: https
+                port: 443
+                targetPort: https
+                protocol: TCP
+          EOF
 
 # global nutanix nodepool configs. These configs can be overriden within each nodepool.
 global:
