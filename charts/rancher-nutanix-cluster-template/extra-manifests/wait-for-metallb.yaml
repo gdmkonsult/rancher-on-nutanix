@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: wait-for-metallb
+  namespace: metallb-system
+  annotations:
+    "helm.sh/hook": "post-install,post-upgrade"
+    "helm.sh/hook-weight": "0"
+spec:
+  template:
+    spec:
+      containers:
+      - name: wait
+        image: busybox
+        command: ['sh', '-c', 'until kubectl get pods -n metallb-system -l app=metallb -o jsonpath="{.items[*].status.phase}"| grep -q Running; do echo waiting for metallb; sleep 2; done']
+      restartPolicy: OnFailure
+      serviceAccountName: default

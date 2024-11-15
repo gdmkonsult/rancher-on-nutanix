@@ -1,11 +1,23 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
+  name: metallb-system
+  namespace: fleet-default
+spec:
+  repo: https://github.com/metallb/metallb
+  paths:
+  - config/manifests/metallb-crds.yaml
+  targetNamespace: metallb-system
+  branch: v0.14.8
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
   name: metallb
   namespace: fleet-default
 spec:
   repo: https://github.com/metallb/metallb
   paths:
-  - config/manifests
+  - config/manifests/metallb-native.yaml
   targetNamespace: metallb-system
   branch: v0.14.8
