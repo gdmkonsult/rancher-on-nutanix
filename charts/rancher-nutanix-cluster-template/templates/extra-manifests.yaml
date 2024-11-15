@@ -1,0 +1,6 @@
+{{- if .Values.extraManifests.enabled }}
+{{- range $path, $_ := .Files.Glob "extra-manifests/*.yaml" }}
+---
+{{ $.Files.Get $path }}
+{{- end }}
+{{- end }}
