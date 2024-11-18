@@ -1984,7 +1984,6 @@ webhooks:
     resources:
     - l2advertisements
   sideEffects: None
-
 ---
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
