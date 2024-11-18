@@ -66,16 +66,6 @@ questions:
   - "Rancher-IPAM"
   - "1700-GDM i Norr R&D"
   group: "Global"
-- variable: rke.additionalManifest.ipAddressStart
-  label: "IP-Range start IP"
-  description: "First IP-number that you want to use from your assigned loadbalancer IP-pool"
-  default: 
-  type: string
-- variable: rke.additionalManifest.ipAddressStop
-  label: "IP-Range stop IP"
-  description: "Last IP-number that you want to use from your assigned loadbalancer IP-pool"
-  default: 
-  type: string
 - variable: global.nodepools.cloudInit
   label: "Cloud Init"
   default: |-
@@ -85,6 +75,20 @@ questions:
   type: multiline
   description: "Cloud Init Configuration Yaml"
   group: "Global"
+
+## loadbalancer settings
+- variable: rke.additionalManifest.ipAddressStart
+  label: "IP-Range start IP"
+  description: "First IP-number that you want to use from your assigned loadbalancer IP-pool"
+  default: 
+  type: string
+  group: "Loadbalancer"
+- variable: rke.additionalManifest.ipAddressStop
+  label: "IP-Range stop IP"
+  description: "Last IP-number that you want to use from your assigned loadbalancer IP-pool"
+  default: 
+  type: string
+  group: "Loadbalancer"
 
 
 ## nodepools
