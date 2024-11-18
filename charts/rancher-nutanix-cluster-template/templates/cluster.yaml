@@ -20,7 +20,7 @@ spec:
   kubernetesVersion: {{ .Values.kubernetesVersion }}
   {{- end }}
   rkeConfig:
-    additionalManifest: |-
+    additionalManifest: |
       {{ .Files.Get "includes.yaml" | indent 4 }}
     machinePools:
     {{- if .Values.nodepools }} {{ range $index, $nodepool := .Values.nodepools }}
