@@ -1,0 +1,34 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: metallb-l2adv
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - metal-lb-ip-pool
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rke2-ingress-nginx-controller-loadbalancer
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: rke2-ingress-nginx
+    app.kubernetes.io/name: rke2-ingress-nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: rke2-ingress-nginx
+    app.kubernetes.io/name: rke2-ingress-nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+    - name: https
+      port: 443
+      targetPort: https
+      protocol: TCP

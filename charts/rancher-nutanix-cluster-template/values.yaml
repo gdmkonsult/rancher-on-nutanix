@@ -20,6 +20,9 @@ kubernetesVersion: "v1.29.10+rke2r1"
 
 # general RKE options
 rke:
+  additionalManifest:
+    ipAddressStart: "10.11.58.120"
+    ipAddressStop: "10.11.58.125" 
   # enable local auth endpoint
   # specify fqdn of local access endpoint
   # fqdn: foo.bar.example
