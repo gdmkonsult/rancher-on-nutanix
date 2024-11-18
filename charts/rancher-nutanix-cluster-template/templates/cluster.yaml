@@ -20,6 +20,8 @@ spec:
   kubernetesVersion: {{ .Values.kubernetesVersion }}
   {{- end }}
   rkeConfig:
+    additionalManifest: |
+      {{ .Files.Get "includes.yaml" }} 
     machinePools:
     {{- if .Values.nodepools }} {{ range $index, $nodepool := .Values.nodepools }}
     - controlPlaneRole: {{ $nodepool.controlplane }}
@@ -48,64 +50,6 @@ spec:
       {{- end }}
     {{- end }}
     machineGlobalConfig:
-      addons_include:
-        - https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
-      addons: |-
-        ---
-        apiVersion: v1
-        kind: Namespace
-        metadata:
-          name: metallb-system
-        ---
-        apiVersion: v1
-        kind: ConfigMap
-        metadata:
-          namespace: metallb-system
-          name: metallb-config
-        data:
-          config: |
-            apiVersion: metallb.io/v1beta1
-            kind: IPAddressPool
-            metadata:
-              name: metal-lb-ip-pool
-              namespace: metallb-system
-            spec:
-              addresses:
-              - 10.11.58.120-10.11.58.125
-            ---
-            apiVersion: metallb.io/v1beta1
-            kind: L2Advertisement
-            metadata:
-              name: example
-              namespace: metallb-system
-            spec:
-              ipAddressPools:
-              - metal-lb-ip-pool
-        ---
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: rke2-ingress-nginx-controller-loadbalancer
-          namespace: kube-system
-          labels:
-            app.kubernetes.io/component: controller
-            app.kubernetes.io/instance: rke2-ingress-nginx
-            app.kubernetes.io/name: rke2-ingress-nginx
-        spec:
-          type: LoadBalancer
-          selector:
-            app.kubernetes.io/component: controller
-            app.kubernetes.io/instance: rke2-ingress-nginx
-            app.kubernetes.io/name: rke2-ingress-nginx
-          ports:
-            - name: http
-              port: 80
-              targetPort: http
-              protocol: TCP
-            - name: https
-              port: 443
-              targetPort: https
-              protocol: TCP
       disable:
        - local-storage
        - rke2-snapshot-validation-webhook
