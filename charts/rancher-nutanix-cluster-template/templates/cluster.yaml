@@ -20,8 +20,8 @@ spec:
   kubernetesVersion: {{ .Values.kubernetesVersion }}
   {{- end }}
   rkeConfig:
-    additionalManifest: |
-      {{ .Files.Get "includes.yaml" }} 
+    additionalManifest: |-
+      {{ .Files.Get "includes.yaml" | indent 4 }} 
     machinePools:
     {{- if .Values.nodepools }} {{ range $index, $nodepool := .Values.nodepools }}
     - controlPlaneRole: {{ $nodepool.controlplane }}
