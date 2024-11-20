@@ -21,7 +21,7 @@ spec:
   {{- end }}
   rkeConfig:
     additionalManifest: |
-{{ .Files.Get "metallb.yaml" | indent 6 }}
+{{ .Files.Get "metallb-crd.yaml" | indent 6 }}
       ---
       apiVersion: metallb.io/v1beta1
       kind: IPAddressPool
@@ -31,7 +31,6 @@ spec:
       spec:
         addresses:
         - {{ .Values.rke.additionalManifest.ipAddressStart }}-{{ .Values.rke.additionalManifest.ipAddressStop }}
-{{ .Files.Get "metallb-patch.yaml" | indent 6 }}
     machinePools:
     {{- if .Values.nodepools }} {{ range $index, $nodepool := .Values.nodepools }}
     - controlPlaneRole: {{ $nodepool.controlplane }}
