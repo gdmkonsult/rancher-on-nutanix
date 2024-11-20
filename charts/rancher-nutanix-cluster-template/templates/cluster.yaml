@@ -22,7 +22,6 @@ spec:
   rkeConfig:
     additionalManifest: |
 {{ .Files.Get "metallb.yaml" | indent 7 }}
-    ---
     apiVersion: metallb.io/v1beta1
     kind: IPAddressPool
     metadata:
