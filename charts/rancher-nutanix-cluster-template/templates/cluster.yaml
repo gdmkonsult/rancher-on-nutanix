@@ -22,6 +22,7 @@ spec:
   rkeConfig:
     additionalManifest: |
 {{ .Files.Get "metallb.yaml" | indent 7 }}
+    ---
     apiVersion: metallb.io/v1beta1
     kind: IPAddressPool
     metadata:
@@ -30,6 +31,7 @@ spec:
     spec:
       addresses:
       - {{ .Values.rke.additionalManifest.ipAddressStart }}-{{ .Values.rke.additionalManifest.ipAddressStop }}
+    ---
 {{ .Files.Get "metallb-patch.yaml" | indent 7 }}
     machinePools:
     {{- if .Values.nodepools }} {{ range $index, $nodepool := .Values.nodepools }}
